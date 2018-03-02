@@ -23,6 +23,7 @@ class HangGame():
 				return WordInList
 
 	def Start_Game(self):
+		self.Clear_Screen(self)
 		self.GameGoing = True
 		self.HangingWord = self.Get_Word(self)
 		self.Clear_Screen(self)
@@ -51,7 +52,8 @@ class HangGame():
 
 	def Guess_A_Letter(self):
 		self.Print_Statue(self)
-		self.Last_Letter = input('Guess a letter: \n').lower()
+		print("Guess a letter: \n>>>",end='')
+		self.Last_Letter = input().lower()
 		if len(self.Last_Letter) == 1:
 			if self.Last_Letter in self.characters and self.Last_Letter not in self.Guessed:
 				self.characters.remove(self.Last_Letter)
@@ -86,7 +88,6 @@ class HangGame():
 		for i in range(int(len(self.characters)/6)+1):
 			print('\t\t', end="")
 			print(", ".join(self.characters[i*6:(i+1)*6]) + "\n")
-			
 	def Clear_Screen(self):
 		try:
 			system('cls')
@@ -162,6 +163,9 @@ lives6 = """___________
 |
 |
 | """
-while True:
-	HangGame.Start_Game(HangGame)
-	HangGame.CleanUp(HangGame)
+if __name__=='__main__':
+	print('Welcome to Hangman the game...')
+	sleep(3)
+	while True:
+		HangGame.Start_Game(HangGame)
+		HangGame.CleanUp(HangGame)
