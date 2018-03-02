@@ -16,9 +16,9 @@ class HangGame():
 			if raw != '':
 				WordInList = list(raw)
 				for i in range(0, len(WordInList)):
-					if WordInList[i] not in allowed:
-						print('You suck!')
-						break
+					if WordInList[i] not in self.characters:
+						print('You suck! Only alphabetic characters')
+						self.Get_Word(self)
 					return WordInList
 					
 	def Start_Game(self):
