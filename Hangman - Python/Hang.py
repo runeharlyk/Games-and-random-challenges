@@ -34,9 +34,9 @@ class HangGame():
 				print('You won! Great job! The word was: ')
 				for i in range(0,len(self.HangingWord)):
 					print(self.HangingWord[i], end="")
-				sleep(.5)
+				sleep(.1)
 				print(' ')
-				sleep(2)
+				sleep(4)
 				break
 			elif self.current_statues == 'Over':
 				self.Clear_Screen(self)
@@ -44,9 +44,9 @@ class HangGame():
 				print('You hanged the man! The word was: ')
 				for i in range(0,len(self.HangingWord)):
 					print(self.HangingWord[i], end="")
-				sleep(.5)
+				sleep(.1)
 				print(' ')
-				sleep(2)
+				sleep(4)
 				break
 
 	def Guess_A_Letter(self):
@@ -97,16 +97,16 @@ class HangGame():
 
 		for i in range(0,len(self.HangingWord)):
 			if self.HangingWord[i] not in self.Guessed:
-				return 'Going'
+				return
 		return 'Won'
 
 	def CleanUp(self):
 		self.GameGoing = False
-		characters = allowed
-		Guessed = []
-		HangingWord = None
-		Last_Letter = ''
-		Lives = 6
+		self.characters = allowed
+		self.Guessed = []
+		self.HangingWord = None
+		self.Last_Letter = ''
+		self.Lives = 6
 		self.Clear_Screen(self)
 dead = """___________
 |  /     |
@@ -158,4 +158,6 @@ lives6 = """___________
 |
 |
 | """
-HangGame.Start_Game(HangGame)
+while True:
+	HangGame.Start_Game(HangGame)
+	HangGame.CleanUp(HangGame)
