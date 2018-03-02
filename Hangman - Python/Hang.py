@@ -47,7 +47,7 @@ class HangGame():
 				
 	def Guess_A_Letter(self):
 		self.Print_Statue(self)
-		self.Last_Letter = input('Guess a letter: \n')
+		self.Last_Letter = input('Guess a letter: \n').lower()
 		if len(self.Last_Letter) == 1:
 			if self.Last_Letter in self.characters:
 				if self.Last_Letter in self.HangingWord:
