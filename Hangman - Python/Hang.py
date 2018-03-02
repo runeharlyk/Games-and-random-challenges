@@ -54,6 +54,7 @@ class HangGame():
 		self.Last_Letter = input('Guess a letter: \n').lower()
 		if len(self.Last_Letter) == 1:
 			if self.Last_Letter in self.characters and self.Last_Letter not in self.Guessed:
+				self.characters.remove(self.Last_Letter)
 				if self.Last_Letter in self.HangingWord:
 					self.Guessed.append(self.Last_Letter)
 				else:
@@ -81,8 +82,11 @@ class HangGame():
 				print("  ", end="")
 			else:
 				print('_ ', end="")
-		print('\tLives: ' + str(self.Lives) + '\n', end="")
-
+		print('\n\n\t\t    Lives: ' + str(self.Lives) + '\n\n', end="")
+		for i in range(int(len(self.characters)/6)+1):
+			print('\t\t', end="")
+			print(", ".join(self.characters[i*6:(i+1)*6]) + "\n")
+			
 	def Clear_Screen(self):
 		try:
 			system('cls')
