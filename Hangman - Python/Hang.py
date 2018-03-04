@@ -7,8 +7,9 @@ Words = ['alligator', 'ant', 'bear', 'bee', 'bird','camel','cat','cheetah','chic
 class HangGame():
 	characters = allowed
 	Multiplayer = None
-	Guessed = []
+	Category = None
 	HangingWord = None
+	Guessed = []
 	Last_Letter = ''
 	Lives = 6
 	current_statues = 'Over'
@@ -23,7 +24,8 @@ class HangGame():
 						self.CleanUp(self)
 						print('You suck! Only alphabetic characters')
 						self.Get_Word(self)
-				return WordInList
+				self.HangingWord = WordInList
+				break
 
 	def Start_Game(self):
 		self.Clear_Screen(self)
@@ -31,7 +33,7 @@ class HangGame():
 			self.Multiplayer = self.Get_Players(self)
 		self.GameGoing = True
 		if self.Multiplayer:
-			self.HangingWord = self.Get_Word(self)
+			self.Get_Word(self)
 		else:
 			self.HangingWord = list(random.choice(Words))
 		self.Clear_Screen(self)
