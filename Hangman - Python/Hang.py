@@ -1,10 +1,12 @@
 #Hangman
 from os import system
 from time import sleep
+import random
 allowed = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å', ' ']
-
+Words = ['alligator', 'ant', 'bear', 'bee', 'bird','camel','cat','cheetah','chicken','chimpanzee','cow','crocodile','deer','dog','dolphin','duck','eagle','elephant','fish','fly','fox','frog','giraffe','goat','goldfish','hamster','horse','hippopotamus','kangaroo','kitten','lion','lobster','monkey','octopus','owl','panda','pig','puppy','rabbit','rat','scorpion','seal','shark','sheep','snail','snake','spider','squirrel','tiger','turtle','wolf','zebra']
 class HangGame():
 	characters = allowed
+	Multiplayer = None
 	Guessed = []
 	HangingWord = None
 	Last_Letter = ''
@@ -25,8 +27,13 @@ class HangGame():
 
 	def Start_Game(self):
 		self.Clear_Screen(self)
+		if self.Multiplayer == None:
+			self.Multiplayer = self.Get_Players(self)
 		self.GameGoing = True
-		self.HangingWord = self.Get_Word(self)
+		if self.Multiplayer:
+			self.HangingWord = self.Get_Word(self)
+		else:
+			self.HangingWord = list(random.choice(Words))
 		self.Clear_Screen(self)
 		while True:
 			self.Guess_A_Letter(self)
@@ -85,7 +92,7 @@ class HangGame():
 		for i in range(int(len(self.characters)/6)+1):
 			print('\t\t', end="")
 			print(", ".join(self.characters[i*6:(i+1)*6]) + "\n")
-			
+
 	def Clear_Screen(self):
 		Val = system('cls')
 		if Val != 0:
@@ -95,11 +102,20 @@ class HangGame():
 		if self.Lives <= 0:
 			print(dead)
 			return 'Over'
-
 		for i in range(0,len(self.HangingWord)):
 			if self.HangingWord[i] not in self.Guessed:
 				return
 		return 'Won'
+
+	def Get_Players(self):
+		while True:
+			Raw = input('Do you want to play Single- or Multiplayer (S/M)').lower()
+			if Raw == 's':
+				return False
+			elif Raw == 'm':
+				return True
+			else:
+				print('"S" or "M"')
 
 	def CleanUp(self):
 		self.GameGoing = False
