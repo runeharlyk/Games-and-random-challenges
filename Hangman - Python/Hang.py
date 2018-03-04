@@ -10,6 +10,7 @@ class HangGame():
 	Last_Letter = ''
 	Lives = 6
 	current_statues = 'Over'
+
 	def Get_Word(self):
 		while True:
 			raw = input('Write your word, and don\'t show it to your opponent!\n').lower()
@@ -33,20 +34,16 @@ class HangGame():
 			if self.current_statues == 'Won':
 				self.Clear_Screen(self)
 				print('You won! Great job! The word was: ')
-				for i in range(0,len(self.HangingWord)):
-					print(self.HangingWord[i], end="")
-				sleep(.1)
-				print(' ')
+				sleep(.5)
+				print(''.join(self.HangingWord))
 				sleep(4)
 				break
 			elif self.current_statues == 'Over':
 				self.Clear_Screen(self)
 				print(dead)
 				print('You hanged the man! The word was: ')
-				for i in range(0,len(self.HangingWord)):
-					print(self.HangingWord[i], end="")
-				sleep(.1)
-				print(' ')
+				sleep(0.5)
+				print(''.join(self.HangingWord))
 				sleep(4)
 				break
 
@@ -88,12 +85,11 @@ class HangGame():
 		for i in range(int(len(self.characters)/6)+1):
 			print('\t\t', end="")
 			print(", ".join(self.characters[i*6:(i+1)*6]) + "\n")
+			
 	def Clear_Screen(self):
-		try:
-			system('cls')
-		except:
+		Val = system('cls')
+		if Val != 0:
 			system('clear')
-		return
 
 	def Check_Statues(self):
 		if self.Lives <= 0:
@@ -165,6 +161,13 @@ lives6 = """___________
 | """
 if __name__=='__main__':
 	print('Welcome to Hangman the game...')
+	sleep(2)
+	print('>>>The creator of this version of the hangman game is Rune Harlyk.')
+	sleep(2)
+	print('>>>Source code:')
+	print('https://github.com/runeharlyk/Games-and-random-challenges/blob/master/Hangman%20-%20Python/Hang.py')
+	sleep(2)
+	print('\nHave fun :D')
 	sleep(3)
 	while True:
 		HangGame.Start_Game(HangGame)
