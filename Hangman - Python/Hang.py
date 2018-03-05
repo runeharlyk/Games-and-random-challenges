@@ -5,7 +5,7 @@ import random
 allowed = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å', ' ']
 Words = ['alligator', 'ant', 'bear', 'bee', 'bird','camel','cat','cheetah','chicken','chimpanzee','cow','crocodile','deer','dog','dolphin','duck','eagle','elephant','fish','fly','fox','frog','giraffe','goat','goldfish','hamster','horse','hippopotamus','kangaroo','kitten','lion','lobster','monkey','octopus','owl','panda','pig','puppy','rabbit','rat','scorpion','seal','shark','sheep','snail','snake','spider','squirrel','tiger','turtle','wolf','zebra']
 class HangGame():
-	characters = allowed
+	characters = allowed.copy()
 	Multiplayer = None
 	Category = None
 	HangingWord = None
@@ -121,8 +121,8 @@ class HangGame():
 
 	def CleanUp(self):
 		self.GameGoing = False
-		self.characters = allowed
-		self.Guessed = []
+		self.characters = allowed.copy()
+		self.Guessed[:] = []
 		self.HangingWord = None
 		self.Last_Letter = ''
 		self.Lives = 6
