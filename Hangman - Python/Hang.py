@@ -9,7 +9,7 @@ class HangGame():
 	Multiplayer = None
 	Category = None
 	HangingWord = None
-	Guessed = []
+	Guessed = [' ']
 	Last_Letter = ''
 	Lives = 6
 	current_statues = 'Over'
@@ -122,7 +122,7 @@ class HangGame():
 	def CleanUp(self):
 		self.GameGoing = False
 		self.characters = allowed.copy()
-		self.Guessed[:] = []
+		self.Guessed[:] = [' ']
 		self.HangingWord = None
 		self.Last_Letter = ''
 		self.Lives = 6
