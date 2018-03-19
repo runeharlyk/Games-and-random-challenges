@@ -74,17 +74,17 @@ class HangGame():
 	def Print_Statue(self):
 		self.Clear_Screen(self)
 		if self.Lives == 6:
-			print(lives6)
+			print(self.lives6)
 		if self.Lives == 5:
-			print(lives5)
+			print(self.lives5)
 		if self.Lives == 4:
-			print(lives4)
+			print(self.lives4)
 		if self.Lives == 3:
-			print(lives3)
+			print(self.lives3)
 		if self.Lives == 2:
-			print(lives2)
+			print(self.lives2)
 		if self.Lives == 1:
-			print(lives1)
+			print(self.lives1)
 		for i in range(0,len(self.HangingWord)):
 			if self.HangingWord[i] in self.Guessed:
 				print(self.HangingWord[i] + ' ', end="")
@@ -129,50 +129,49 @@ class HangGame():
 		self.Last_Letter = ''
 		self.Lives = 6
 		self.Clear_Screen(self)
-dead = """___________
+	dead = """___________
 |  /     |
 | /      0
 |/      -I-
 |       / \\
 |
 | """
-lives1 = """___________
+	lives1 = """___________
 |  /     |
 | /      0
 |/      -I-
 |       /
 |
 | """
-lives2 = """___________
+	lives2 = """___________
 |  /     |
 | /      0
 |/      -I-
 |
 |
 | """
-lives3 = """___________
+	lives3 = """___________
 |  /     |
 | /      0
 |/      -I
 |
 |
 | """
-lives4 = """___________
+	lives4 = """___________
 |  /     |
 | /      0
 |/       I
 |
 |
 | """
-lives5 = """___________
+	lives5 = """___________
 |  /     |
 | /      0
 |/
 |
 |
 | """
-
-lives6 = """___________
+	lives6 = """___________
 |  /     |
 | /
 |/
