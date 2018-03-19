@@ -14,19 +14,6 @@ class HangGame():
 	Lives = 6
 	current_statues = 'Over'
 
-	def Get_Word(self):
-		while True:
-			raw = input('Write your word, and don\'t show it to your opponent!\n').lower()
-			if raw != '':
-				WordInList = list(raw)
-				for i in range(0, len(WordInList)):
-					if WordInList[i] not in self.characters:
-						self.CleanUp(self)
-						print('You suck! Only alphabetic characters')
-						self.Get_Word(self)
-				self.HangingWord = WordInList
-				break
-
 	def Start_Game(self):
 		self.Clear_Screen(self)
 		if self.Multiplayer == None:
@@ -56,6 +43,21 @@ class HangGame():
 				sleep(4)
 				break
 
+	def Get_Word(self):
+		while True:
+			raw = input('Write your word, and don\'t show it to your opponent!\n').lower()
+			if raw != '':
+				WordInList = list(raw)
+				for i in range(0, len(WordInList)):
+					if WordInList[i] not in self.characters:
+						self.CleanUp(self)
+						print('You suck! Only alphabetic characters')
+						WordInList[:] = []
+						self.Get_Word(self)
+						return
+				self.HangingWord = WordInList
+				break
+				
 	def Guess_A_Letter(self):
 		self.Print_Statue(self)
 		print("Guess a letter: \n>>>",end='')
